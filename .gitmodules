@@ -1,0 +1,3 @@
+[submodule "api/tinkerware-blueprint"]
+	path = api/tinkerware-blueprint
+	url = https://github.com/Tinker-Ware/tinkerware-blueprint.git

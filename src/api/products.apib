@@ -1,0 +1,125 @@
+FORMAT: 1A
+HOST: http://tinkerware.io
+
+# Product API
+An API that manages the resources of the product details
+
+# Group Products
+Resources related to the products
+
+## Products Collection [/api/v1/products]
+
+### Retrieve all products [GET]
+
++ Request
+
+    + Header
+
+            authorization: Bearer qphYSqjEFk1RcFxYqqIIFk4vaBJvDoBr3t9aHTp1JFEAO0NS7ECyLJJyUPybOUNf
+
++ Response 200 (application/json)
+
+    + Header
+
+            authorization: Bearer qphYSqjEFk1RcFxYqqIIFk4vaBJvDoBr3t9aHTp1JFEAO0NS7ECyLJJyUPybOUNf
+
+    + Body
+
+            {
+              "products": [
+                {
+                  "id": 1,
+                  "title": "Luna Flower",
+                  "description": "Collared Neck Stylish",
+                  "price": 60.92,
+                  "category": "Women",
+                  "image": "images/pc.jpg"
+                },
+                {
+                  "id": 2,
+                  "title": "Dearlovers",
+                  "description": "Chiffon Blouse U Neck",
+                  "price": 89.99,
+                  "category": "Women",
+                  "image": "images/pc1.jpg"
+                },
+                {
+                  "id": 3,
+                  "title": "Original Penguin",
+                  "description": "Short Sleeve Plaid Button",
+                  "price": 79.99,
+                  "category": "Men",
+                  "image": "images/pc2.jpg"
+                },
+                {
+                  "id": 4,
+                  "title": "Awesome21",
+                  "description": "Lightweight Relaxed Fit",
+                  "price": 66.92,
+                  "category": "Women",
+                  "image": "images/pc3.jpg"
+                },
+                {
+                  "id": 5,
+                  "title": "Nautica",
+                  "description": "Slim Fit",
+                  "price": 76.99,
+                  "category": "Men",
+                  "image": "images/pc4.jpg"
+                },
+                {
+                  "id": 6,
+                  "title": "Woolrich",
+                  "description": "Bering Wool Modern Fit",
+                  "price": 87.99,
+                  "category": "Men",
+                  "image": "images/pc5.jpg"
+                },
+                {
+                  "id": 7,
+                  "title": "Colrovie",
+                  "description": "Boat Neck Dolman",
+                  "price": 97.99,
+                  "category": "Women",
+                  "image": "images/pc6.jpg"
+                },
+                {
+                  "id": 8,
+                  "title": "Boss",
+                  "description": "C-Rapino Clean Single",
+                  "price": 64.99,
+                  "category": "Men",
+                  "image": "images/pc7.jpg"
+                }
+              ]
+            }
+
+## Repository [/api/v1/products/{id}]
++ Parameters
+    + id: `1` (number, required) - `id` id of a product.
+
+### Get a single product [GET]
++ Request
+
+    + Header
+
+            authorization: Bearer qphYSqjEFk1RcFxYqqIIFk4vaBJvDoBr3t9aHTp1JFEAO0NS7ECyLJJyUPybOUNf
+
++ Response 200 (application/json)
+
+    + Header
+
+            authorization: Bearer qphYSqjEFk1RcFxYqqIIFk4vaBJvDoBr3t9aHTp1JFEAO0NS7ECyLJJyUPybOUNf
+
+    + Body
+
+            {
+              "product":
+                      {
+                        "id": 1,
+                        "title": "Product",
+                        "description": "A product from Acme's catalog",
+                        "price": 19.99
+                        "image": "http://localhost/somestuff.jpg"
+                      }
+            }

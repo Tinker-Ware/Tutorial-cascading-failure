@@ -1,0 +1,36 @@
+FORMAT: 1A
+HOST: http://tinkerware.io
+
+# Users API
+An API that manages the users
+
+# Group Users
+Resources related to the users
+
+## Users Collection [/api/v1/users/{id}]
++ Parameters
+    + id: `1` (number, required) - `id` id of an user
+
+### Get an User [GET]
++ Request
+
+    + Header
+
+            authorization: Bearer qphYSqjEFk1RcFxYqqIIFk4vaBJvDoBr3t9aHTp1JFEAO0NS7ECyLJJyUPybOUNf
+
++ Response 200 (application/json)
+
+    + Header
+
+            authorization: Bearer qphYSqjEFk1RcFxYqqIIFk4vaBJvDoBr3t9aHTp1JFEAO0NS7ECyLJJyUPybOUNf
+
+    + Body
+
+            {
+                "user": {
+                    "id": 1,
+                    "name": "Leonel Doberto",
+                    "username": "iLeonelRoberto",
+                    "email": "some@email.com"
+                }
+            }
