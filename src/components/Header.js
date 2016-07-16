@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {Link, IndexLink} from 'react-router';
 
-const Header = () => {
+const Header = ( {cartAppState} ) => {
   return (
     <div className="Header">
       <div className="container">
@@ -53,7 +53,7 @@ const Header = () => {
                   <img src="images/cart.png" alt=""/>
                 </h3>
               </a>
-              <p><a href="javascript:;" className="simpleCart_empty">Empty Cart</a></p>
+              <p><a href="javascript:;" className="simpleCart_empty">{cartAppState.get("cart") ? cartAppState.get("cart").size + ' Product(s)': 'Empty Cart'}</a></p>
             </div>
             <div className="clearfix"></div>
           </div>
@@ -61,6 +61,10 @@ const Header = () => {
       </div>
     </div>
   );
+};
+
+Header.propTypes = {
+  cartAppState: PropTypes.object.isRequired
 };
 
 export default Header;

@@ -11,11 +11,13 @@ export class MainStore extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header cartAppState={this.props.cartAppState} />
         <Banner />
         <Content
           productsAppState={this.props.productsAppState}
-          requestProducts={this.props.actions.requestProducts} />
+          cartAppState={this.props.cartAppState}
+          requestProducts={this.props.actions.requestProducts}
+          setCartItem={this.props.actions.setCartItem} />
         <Footer />
       </div>
     );
@@ -24,12 +26,14 @@ export class MainStore extends Component {
 
 MainStore.propTypes = {
   actions: PropTypes.object.isRequired,
-  productsAppState: PropTypes.object.isRequired
+  productsAppState: PropTypes.object.isRequired,
+  cartAppState: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    productsAppState: state.productsAppState
+    productsAppState: state.productsAppState,
+    cartAppState: state.cartAppState
   };
 }
 

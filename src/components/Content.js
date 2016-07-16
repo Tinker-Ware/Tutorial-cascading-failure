@@ -1,22 +1,35 @@
 import React, {PropTypes} from 'react';
 import {Link, IndexLink} from 'react-router';
+import {Map, fromJS} from 'immutable';
 import ProductItem from './ProductItem';
 
-const Content = ( {productsAppState, requestProducts} ) => {
+const Content = ( {productsAppState, cartAppState, requestProducts, setCartItem} ) => {
   if(!productsAppState.get("products"))
     requestProducts();
+    
+  const handleProductItemClick = (e) => {
+    setCartItem(fromJS({
+      cart_items: cartAppState.get("cart")? cartAppState.get("cart").map((value, index) =>
+        value
+      ).toJS() : [],
+      cart_item: productsAppState.get("products").get("products").filter(value => 
+        value.get('id') == e.target.value
+      ).first().toJS()
+    }));
+  };
   
   const PrintProducts = 
     (productsAppState.get("products")) ?
       productsAppState.get("products").get("products").map((value, index) => 
         <ProductItem
-          identifier={index}
-          key={index}
-          title={value.get("title")}
           category={value.get("category")}
           description={value.get("description")}
-          price={value.get("price")}
+          handleClick={handleProductItemClick}
+          identifier={index+1}
           image={value.get("image")}
+          key={index}
+          price={value.get("price")}
+          title={value.get("title")}
         />) : "";
         
   return (
@@ -53,7 +66,9 @@ const Content = ( {productsAppState, requestProducts} ) => {
 
 Content.propTypes = {
   productsAppState: PropTypes.object.isRequired,
-  requestProducts: PropTypes.func.isRequired
+  cartAppState: PropTypes.object.isRequired,
+  requestProducts: PropTypes.func.isRequired,
+  setCartItem: PropTypes.func.isRequired
 };
 
 export default Content;

@@ -5,25 +5,25 @@ const ProductItem = ( props ) => {
       <div key={props.identifier} className="col-md-3 item-grid simpleCart_shelfItem">
         <div className="mid-pop">
           <div className="pro-img">
-            <img src={props.image} className="img-responsive" alt=""/>
-            <div className="zoom-icon ">
-              <a className="picture b-link-stripe b-animate-go thickbox" href="images/pc.jpg" rel="title"><i className="glyphicon glyphicon-search icon "></i></a>
-              <a href="single.html"><i className="glyphicon glyphicon-menu-right icon"></i></a>
-            </div>
+            <img src={props.image} className="img-responsive" alt={props.title}/>
           </div>
           <div className="mid-1">
             <div className="women">
               <div className="women-top">
                 <span>{props.category}</span>
-                <h6><a href="#">{props.title}</a></h6>
+                <h6><a href="javascript:void(0)">{props.title}</a></h6>
               </div>
               <div className="img item_add">
-                <a href="#"><img src="images/ca.png" alt=""/></a>
+                <a 
+                  onClick={props.handleClick}
+                  href="javascript:void(0)">
+                    <img value={props.identifier} src="images/ca.png" alt="add to cart"/>
+                </a>
               </div>
               <div className="clearfix"></div>
             </div>
             <div className="mid-2">
-              <p><em className="item_price">{props.price}</em></p>
+              <p><em className="item_price">$ {props.price}</em></p>
               <div className="clearfix"></div>
             </div>
           </div>
@@ -33,6 +33,7 @@ const ProductItem = ( props ) => {
 };
 
 ProductItem.propTypes = {
+  handleClick: PropTypes.func.isRequired,
   identifier: PropTypes.number,
   title: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,

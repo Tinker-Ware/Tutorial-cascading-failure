@@ -14,7 +14,7 @@
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run clean-dist && npm run lint && npm run test",
     "build": "babel-node tools/build.js && npm run open:dist",
-    "mock-server": "node_modules/drakov/drakov -f \"src/api/*.apib\" \"src/api/\" -p 3100 --delay 700 --autoOptions --header authorization --header provider-token",
+    "mock-server": "node_modules/drakov/drakov -f \"src/api/*.apib\" \"src/api/\" -p 3100 --delay 200 --autoOptions --header authorization --header provider-token",
     "test": "mocha tools/testSetup.js \"src/**/*.spec.js\" --reporter progress",
     "test:watch": "npm run test -- --watch"
   },

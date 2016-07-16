@@ -7,3 +7,7 @@ export function setProducts(value) {
 export function requestProducts() {
   return { type: types.REQUEST_PRODUCTS };
 }
+
+export function setCartItem(value) {
+  return { type: types.SET_CART_ITEM, value };
+}
