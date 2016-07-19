@@ -5,7 +5,7 @@ import {Map, fromJS} from 'immutable';
 import { takeLatest } from 'redux-saga';
 import { call, put, fork } from 'redux-saga/effects'; 
 import * as actions from '../actions/MiddlewareActions';
-import { doRequest, getProducts, getCart, doRequestProducts, doRequestCart } from '../sagas';
+import { doRequest, getProducts, getCart, getUser, doRequestProducts, doRequestCart, doRequestUser } from '../sagas';
 
 describe('sagas middleware', () => {
   it('handles DO_REQUEST_PRODUCTS', () => {
@@ -80,6 +80,26 @@ describe('sagas middleware', () => {
     
     expect(generator.next(Cart).value).to.deep.equal(
 			put(actions.receiveCart(Cart))
+    );
+  });
+	
+	it('handles DO_REQUEST_USER', () => {
+    const generator = getUser();
+    const User = fromJS({
+			"user": {
+					"id": 1,
+					"name": "Leonel Roberto",
+					"username": "iLeonelRoberto",
+					"email": "leonel@email.com"
+			}
+    });
+    
+    expect(generator.next().value).to.deep.equal(
+      call(doRequestUser)
+    );
+    
+    expect(generator.next(User).value).to.deep.equal(
+			put(actions.receiveUser(User))
     );
   });
 });

@@ -13,3 +13,10 @@ export function receiveCart(cart){
     value: cart
   };
 }
+
+export function receiveUser(user){
+  return {
+    type: types.SET_USER,
+    value: user
+  };
+}

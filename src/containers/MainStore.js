@@ -7,32 +7,68 @@ import Footer from '../components/Footer';
 import Banner from '../components/Banner';
 import Content from '../components/Content';
 import Checkout from '../components/Checkout';
+import User from '../components/User';
+import OrderSummary from '../components/OrderSummary';
 
 export class MainStore extends Component {
   render() {
-    const MainPageContent = 
+  const MainPageContent =
       location.pathname == "/" ?
         <Content
-          productsAppState={this.props.productsAppState}
-          cartAppState={this.props.cartAppState}
-					requestCart={this.props.actions.requestCart}
-          requestProducts={this.props.actions.requestProducts}
-          setCartItem={this.props.actions.setCartItem} /> : "";
+        productsAppState={this.props.productsAppState}
+        cartAppState={this.props.cartAppState}
+        userAppState={this.props.userAppState}
+        orderAppState={this.props.orderAppState}
+        requestCart={this.props.actions.requestCart}
+        requestProducts={this.props.actions.requestProducts}
+        requestUser={this.props.actions.requestUser}
+        setCartItem={this.props.actions.setCartItem} /> : "";
     const MainPageBanner = 
-      location.pathname == "/" ?
+      location.pathname == "/"?
         <Banner /> : "";
-		const CheckoutContent = 
+    const CheckoutContent = 
       location.pathname == "/checkout" ?
         <Checkout 
           productsAppState={this.props.productsAppState}
           cartAppState={this.props.cartAppState}
-					deleteCartItem={this.props.actions.deleteCartItem} /> : "";
+          deleteCartItem={this.props.actions.deleteCartItem}
+          setOrder={this.props.actions.setOrder} /> : "";
+    const UserContent = 
+      location.pathname == "/user" ?
+        <User 
+          userAppState={this.props.userAppState} /> : "";
+    const OrderSummaryContent = 
+      location.pathname == "/orderSummary" ?
+        <OrderSummary 
+          orderAppState={this.props.orderAppState}
+          cleanCart={this.props.actions.cleanCart} /> : "";
     return (
       <div>
-        <Header cartAppState={this.props.cartAppState} />
+        <Header
+					cartAppState={this.props.cartAppState}
+					userAppState={this.props.userAppState} />
         {MainPageBanner}
         {MainPageContent}
 				{CheckoutContent}
+        {OrderSummaryContent}
+				{UserContent}
+				<div className="container">
+					<div className="brand">
+						<div className="col-md-3 brand-grid">
+							<img src="images/ic.png" className="img-responsive" alt=""/>
+						</div>
+						<div className="col-md-3 brand-grid">
+							<img src="images/ic1.png" className="img-responsive" alt=""/>
+						</div>
+						<div className="col-md-3 brand-grid">
+							<img src="images/ic2.png" className="img-responsive" alt=""/>
+						</div>
+						<div className="col-md-3 brand-grid">
+							<img src="images/ic3.png" className="img-responsive" alt=""/>
+						</div>
+						<div className="clearfix"></div>
+					</div>
+				</div>
         <Footer />
       </div>
     );
@@ -42,13 +78,17 @@ export class MainStore extends Component {
 MainStore.propTypes = {
   actions: PropTypes.object.isRequired,
   productsAppState: PropTypes.object.isRequired,
-  cartAppState: PropTypes.object.isRequired
+  cartAppState: PropTypes.object.isRequired,
+  orderAppState: PropTypes.object.isRequired,
+	userAppState: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
     productsAppState: state.productsAppState,
-    cartAppState: state.cartAppState
+    cartAppState: state.cartAppState,
+    orderAppState: state.orderAppState,
+		userAppState: state.userAppState
   };
 }
 

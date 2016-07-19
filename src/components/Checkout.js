@@ -3,13 +3,20 @@ import {Link, IndexLink} from 'react-router';
 import {Map, fromJS} from 'immutable';
 import CartProductItem from './CartProductItem';
 
-const Checkout = ( {productsAppState, cartAppState, deleteCartItem} ) => {
+const Checkout = ( {productsAppState, cartAppState, deleteCartItem, setOrder} ) => {
 	const handleCartProductItemDeleteClick = (e) => {
     deleteCartItem(fromJS({
       cart_items: cartAppState.get("cart")? cartAppState.get("cart").map((value, index) =>
         value
       ).toJS() : [],
       id: e.target.value
+    }));
+  };
+	const handleProceedToBuyClick = (e) => {
+    setOrder(fromJS({
+      order: cartAppState.get("cart")? cartAppState.get("cart").map((value, index) =>
+        value
+      ).toJS() : []
     }));
   };
 	const PrintCheckoutProducts = 
@@ -46,9 +53,8 @@ const Checkout = ( {productsAppState, cartAppState, deleteCartItem} ) => {
 					</div>
 				</div>
 				<div className="produced">
-					<a
-						href="single.html"
-						className="hvr-skew-backward">Produced To Buy</a>
+					<Link onClick={handleProceedToBuyClick} to={'/orderSummary'} className="hvr-skew-backward">
+						Proceed To Buy</Link>
 				</div>
 			</div>
 		</div>
@@ -58,7 +64,8 @@ const Checkout = ( {productsAppState, cartAppState, deleteCartItem} ) => {
 Checkout.propTypes = {
   productsAppState: PropTypes.object.isRequired,
   cartAppState: PropTypes.object.isRequired,
-	deleteCartItem: PropTypes.func.isRequired
+	deleteCartItem: PropTypes.func.isRequired,
+	setOrder: PropTypes.func.isRequired
 };
 
 export default Checkout;

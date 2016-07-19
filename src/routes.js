@@ -10,5 +10,9 @@ export default (
     component={MainStore}>
 		<Route
       path="/checkout" />
+		<Route
+      path="/user" />
+    <Route
+      path="/orderSummary" />
   </Route>
 );

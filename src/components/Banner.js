@@ -11,7 +11,7 @@ const Banner = () => {
             <div className="rw-words rw-words-1">
               <span>Beautiful Designs</span>
               <span>Sed ut perspiciatis</span>
-              <span> Totam rem aperiam</span>
+              <span>Totam rem aperiam</span>
               <span>Nemo enim ipsam</span>
               <span>Temporibus autem</span>
               <span>intelligent systems</span>

@@ -171,6 +171,19 @@ describe('reducer', () => {
     }));
   });
   
+	it('handles CLEAN_CART', () => {
+    const initialState = Map();
+    const action = {
+      type: 'CLEAN_CART',
+      value: ""
+    };
+    const nextState = cart(initialState, action);
+
+    expect(nextState).to.equal(fromJS({
+			cart: ""
+		}));
+  });
+	
   it('handles DEFAULT', () => {
     const initialState = Map();
     const action = {type: ''};

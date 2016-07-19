@@ -3,13 +3,16 @@ import {Link, IndexLink} from 'react-router';
 import {Map, fromJS} from 'immutable';
 import ProductItem from './ProductItem';
 
-const Content = ( {productsAppState, cartAppState, requestCart, requestProducts, setCartItem} ) => {
+const Content = ( {productsAppState, cartAppState, userAppState, orderAppState, requestCart, requestProducts, requestUser, setCartItem} ) => {
   if(!productsAppState.get("products"))
     requestProducts();
 		
-	if(!cartAppState.get("cart"))
+	if(!cartAppState.get("cart")&&!orderAppState.get("order"))
 		requestCart();
-    
+		
+	if(!userAppState.get("user"))
+		requestUser();
+  
   const handleProductItemClick = (e) => {
     setCartItem(fromJS({
       cart_items: cartAppState.get("cart")? cartAppState.get("cart").map((value, index) =>
@@ -47,21 +50,6 @@ const Content = ( {productsAppState, cartAppState, requestCart, requestProducts,
             <div className="clearfix"></div>
           </div>
         </div>
-        <div className="brand">
-          <div className="col-md-3 brand-grid">
-            <img src="images/ic.png" className="img-responsive" alt=""/>
-          </div>
-          <div className="col-md-3 brand-grid">
-            <img src="images/ic1.png" className="img-responsive" alt=""/>
-          </div>
-          <div className="col-md-3 brand-grid">
-            <img src="images/ic2.png" className="img-responsive" alt=""/>
-          </div>
-          <div className="col-md-3 brand-grid">
-            <img src="images/ic3.png" className="img-responsive" alt=""/>
-          </div>
-          <div className="clearfix"></div>
-        </div>
       </div>
     </div>
   );
@@ -70,8 +58,11 @@ const Content = ( {productsAppState, cartAppState, requestCart, requestProducts,
 Content.propTypes = {
   productsAppState: PropTypes.object.isRequired,
   cartAppState: PropTypes.object.isRequired,
+	userAppState: PropTypes.object.isRequired,
+  orderAppState: PropTypes.object.isRequired,
 	requestCart: PropTypes.func.isRequired,
   requestProducts: PropTypes.func.isRequired,
+	requestUser: PropTypes.func.isRequired,
   setCartItem: PropTypes.func.isRequired
 };
 

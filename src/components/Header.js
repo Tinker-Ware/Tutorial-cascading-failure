@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {Link, IndexLink} from 'react-router';
 
-const Header = ( {cartAppState} ) => {
+const Header = ( {cartAppState, userAppState} ) => {
   return (
     <div className="Header">
       <div className="container">
@@ -16,6 +16,7 @@ const Header = ( {cartAppState} ) => {
           <div className="col-sm-5 col-md-offset-2  header-login">
             <ul >
               <li>
+								<Link to={'/user'}>{userAppState.get("user")?"Welcome "+userAppState.get("user").get("username"):"Log in"}</Link>
 								<Link to={'/checkout'}>Checkout</Link>
 							</li>
             </ul>
@@ -40,14 +41,13 @@ const Header = ( {cartAppState} ) => {
                   <li><Link className="color" to={'/'}>Home</Link></li>
                   <li><Link className="color" to={'/'}>Women</Link></li>
                   <li><Link className="color" to={'/'}>Home</Link></li>
-                  <li ><Link className="color6" to={'/'}>Contact</Link></li>
                 </ul>
               </div>
             </nav>
           </div>
           <div className="col-sm-2 search-right">
             <div className="cart box_1">
-              <a href="checkout.html">
+              <Link to={'/checkout'}>Checkout
                 <h3>
                   <div className="total">
                     <span className="simpleCart_total">${cartAppState.get("cart") && cartAppState.get("cart").size >0 ? cartAppState.get("cart").map((value, index) =>
@@ -58,7 +58,7 @@ const Header = ( {cartAppState} ) => {
                   </div>
                   <img src="images/cart.png" alt=""/>
                 </h3>
-              </a>
+              </Link>
               <p><Link to={'/checkout'} className="simpleCart_empty">{cartAppState.get("cart") ? cartAppState.get("cart").size + ' Product(s)': 'Empty Cart'}</Link></p>
             </div>
             <div className="clearfix"></div>
@@ -70,7 +70,8 @@ const Header = ( {cartAppState} ) => {
 };
 
 Header.propTypes = {
-  cartAppState: PropTypes.object.isRequired
+  cartAppState: PropTypes.object.isRequired,
+	userAppState: PropTypes.object.isRequired
 };
 
 export default Header;
