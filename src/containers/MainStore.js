@@ -13,7 +13,7 @@ import OrderSummary from '../components/OrderSummary';
 export class MainStore extends Component {
   render() {
   const MainPageContent =
-      location.pathname == "/" ?
+      location.pathname == "/" || location.pathname == "/women" || location.pathname == "/men" ?
         <Content
         productsAppState={this.props.productsAppState}
         cartAppState={this.props.cartAppState}
@@ -22,7 +22,8 @@ export class MainStore extends Component {
         requestCart={this.props.actions.requestCart}
         requestProducts={this.props.actions.requestProducts}
         requestUser={this.props.actions.requestUser}
-        setCartItem={this.props.actions.setCartItem} /> : "";
+        setCartItem={this.props.actions.setCartItem}
+        filter={location.pathname.replace("/","").replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); })} /> : "";
     const MainPageBanner = 
       location.pathname == "/"?
         <Banner /> : "";

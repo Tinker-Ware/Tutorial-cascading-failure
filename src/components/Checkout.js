@@ -14,7 +14,7 @@ const Checkout = ( {productsAppState, cartAppState, deleteCartItem, setOrder} ) 
   };
 	const handleProceedToBuyClick = (e) => {
     setOrder(fromJS({
-      order: cartAppState.get("cart")? cartAppState.get("cart").map((value, index) =>
+      order_products: cartAppState.get("cart")? cartAppState.get("cart").map((value, index) =>
         value
       ).toJS() : []
     }));

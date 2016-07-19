@@ -39,8 +39,8 @@ const Header = ( {cartAppState, userAppState} ) => {
               <div className="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul className="nav navbar-nav nav_1">
                   <li><Link className="color" to={'/'}>Home</Link></li>
-                  <li><Link className="color" to={'/'}>Women</Link></li>
-                  <li><Link className="color" to={'/'}>Home</Link></li>
+                  <li><Link className="color" to={'/women'}>Women</Link></li>
+                  <li><Link className="color" to={'/men'}>Men</Link></li>
                 </ul>
               </div>
             </nav>

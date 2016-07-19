@@ -7,7 +7,7 @@ export default function order(state = initialState, action) {
   switch (action.type) {
 		case types.SET_ORDER:
     {
-      return state.set('order', action.value.get('order'));
+      return state.set('order', action.value.get('order_products'));
     }
     default:
       return state;

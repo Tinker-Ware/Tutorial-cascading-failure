@@ -3,7 +3,7 @@ import {Link, IndexLink} from 'react-router';
 import {Map, fromJS} from 'immutable';
 import ProductItem from './ProductItem';
 
-const Content = ( {productsAppState, cartAppState, userAppState, orderAppState, requestCart, requestProducts, requestUser, setCartItem} ) => {
+const Content = ( {productsAppState, cartAppState, userAppState, orderAppState, requestCart, requestProducts, requestUser, setCartItem, filter} ) => {
   if(!productsAppState.get("products"))
     requestProducts();
 		
@@ -25,18 +25,33 @@ const Content = ( {productsAppState, cartAppState, userAppState, orderAppState, 
   };
   
   const PrintProducts = 
-    (productsAppState.get("products")) ?
-      productsAppState.get("products").map((value, index) => 
-        <ProductItem
-          category={value.get("category")}
-          description={value.get("description")}
-          handleClick={handleProductItemClick}
-          identifier={value.get("id")}
-          image={value.get("image")}
-          key={index}
-          price={value.get("price")}
-          title={value.get("title")}
-        />) : "";
+    (filter!=="")?
+      (productsAppState.get("products")) ?
+        productsAppState.get("products").filter(value => 
+          value.get("category") === filter
+        ).map((value, index) => 
+          <ProductItem
+            category={value.get("category")}
+            description={value.get("description")}
+            handleClick={handleProductItemClick}
+            identifier={value.get("id")}
+            image={value.get("image")}
+            key={index}
+            price={value.get("price")}
+            title={value.get("title")}
+          />) : ""
+      : (productsAppState.get("products")) ?
+        productsAppState.get("products").map((value, index) => 
+          <ProductItem
+            category={value.get("category")}
+            description={value.get("description")}
+            handleClick={handleProductItemClick}
+            identifier={value.get("id")}
+            image={value.get("image")}
+            key={index}
+            price={value.get("price")}
+            title={value.get("title")}
+          />) : "";
         
   return (
     <div className="content">
@@ -63,7 +78,8 @@ Content.propTypes = {
 	requestCart: PropTypes.func.isRequired,
   requestProducts: PropTypes.func.isRequired,
 	requestUser: PropTypes.func.isRequired,
-  setCartItem: PropTypes.func.isRequired
+  setCartItem: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired
 };
 
 export default Content;

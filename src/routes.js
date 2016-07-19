@@ -14,5 +14,9 @@ export default (
       path="/user" />
     <Route
       path="/orderSummary" />
+    <Route
+      path="/women" />
+    <Route
+      path="/men" />
   </Route>
 );

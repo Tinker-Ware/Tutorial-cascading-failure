@@ -9,7 +9,7 @@ describe('reducer', () => {
     const action = {
       type: 'SET_ORDER',
       value: fromJS({
-				"products": [
+				"order_products": [
 					{
 						"id": 2,
 						"title": "Dearlovers",
