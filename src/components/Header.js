@@ -7,7 +7,7 @@ const Header = ( {cartAppState} ) => {
       <div className="container">
         <div className="head">
           <div className=" logo">
-            <a href="index.html"><img src="images/logo.png" alt=""/></a>	
+            <Link to={'/'}><img src="images/logo.png" alt=""/></Link>	
           </div>
         </div>
       </div>
@@ -15,7 +15,9 @@ const Header = ( {cartAppState} ) => {
         <div className="container">
           <div className="col-sm-5 col-md-offset-2  header-login">
             <ul >
-              <li><a href="checkout.html">Checkout</a></li>
+              <li>
+								<Link to={'/checkout'}>Checkout</Link>
+							</li>
             </ul>
           </div>
           <div className="clearfix"> </div>
@@ -35,10 +37,10 @@ const Header = ( {cartAppState} ) => {
               </div>
               <div className="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul className="nav navbar-nav nav_1">
-                  <li><a className="color" href="index.html">Home</a></li>
-                  <li><a className="color" href="#">Women</a></li>
-                  <li><a className="color" href="#">Home</a></li>
-                  <li ><a className="color6" href="contact.html">Contact</a></li>
+                  <li><Link className="color" to={'/'}>Home</Link></li>
+                  <li><Link className="color" to={'/'}>Women</Link></li>
+                  <li><Link className="color" to={'/'}>Home</Link></li>
+                  <li ><Link className="color6" to={'/'}>Contact</Link></li>
                 </ul>
               </div>
             </nav>
@@ -48,12 +50,16 @@ const Header = ( {cartAppState} ) => {
               <a href="checkout.html">
                 <h3>
                   <div className="total">
-                    <span className="simpleCart_total"></span>
+                    <span className="simpleCart_total">${cartAppState.get("cart") && cartAppState.get("cart").size >0 ? cartAppState.get("cart").map((value, index) =>
+                      value.get("price")
+                    ).toJS().reduce(function(previousValue, currentValue) {
+                      return previousValue + currentValue;
+                    }).toFixed(2):0}</span>
                   </div>
                   <img src="images/cart.png" alt=""/>
                 </h3>
               </a>
-              <p><a href="javascript:;" className="simpleCart_empty">{cartAppState.get("cart") ? cartAppState.get("cart").size + ' Product(s)': 'Empty Cart'}</a></p>
+              <p><Link to={'/checkout'} className="simpleCart_empty">{cartAppState.get("cart") ? cartAppState.get("cart").size + ' Product(s)': 'Empty Cart'}</Link></p>
             </div>
             <div className="clearfix"></div>
           </div>

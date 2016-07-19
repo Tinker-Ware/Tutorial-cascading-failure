@@ -22,6 +22,11 @@ export function* getProducts() {
   yield put(actions.receiveProducts(fromJS(Products)));
 }
 
+export function* getCart() {
+	const Cart = yield call(doRequestCart);
+	yield put(actions.receiveCart(fromJS(Cart)));
+}
+
 export function* doRequestProducts() {
   return yield call(
     doRequest, 'http://localhost:3100/api/v1/products',
@@ -34,6 +39,21 @@ export function* doRequestProducts() {
     });
 }
 
+export function* doRequestCart() {
+  return yield call(
+    doRequest, 'http://localhost:3100/api/v1/cart/1',
+    {
+      method: 'GET',
+      headers: {
+        'authorization': 'Bearer qphYSqjEFk1RcFxYqqIIFk4vaBJvDoBr3t9aHTp1JFEAO0NS7ECyLJJyUPybOUNf'
+      },
+      mode: 'cors'
+    });
+}
+
 export default function* root() {
-  yield* takeLatest(types.REQUEST_PRODUCTS, getProducts);
+  yield[
+		takeLatest(types.REQUEST_PRODUCTS, getProducts),
+		takeLatest(types.REQUEST_CART, getCart)
+	];
 }

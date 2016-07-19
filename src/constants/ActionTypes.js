@@ -1,4 +1,6 @@
 export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS';
+export const REQUEST_CART = 'REQUEST_CART';
 export const SET_PRODUCTS = 'SET_PRODUCTS';
+export const SET_CART = 'SET_CART';
 export const SET_CART_ITEM = 'SET_CART_ITEM';
 export const DELETE_CART_ITEM = 'DELETE_CART_ITEM';

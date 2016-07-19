@@ -35,8 +35,7 @@ describe('reducer', () => {
     const nextState = products(initialState, action);
 
     expect(nextState).to.equal(fromJS({
-      products: {
-        products: [
+      products: [
           {
             "id": 1,
             "title": "Product",
@@ -58,7 +57,7 @@ describe('reducer', () => {
             "price": 19.99,
             "image": "http://localhost/somestuff.jpg"
           }
-        ]}
+        ]
     }));
   });
   it('handles DEFAULT', () => {

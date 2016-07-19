@@ -24,6 +24,11 @@ export default function cart(state = initialState, action) {
         value.get('id') !== action.value.get('id')
       ));
     }
+		case types.SET_CART:
+    {
+			// console.log(Cart.cart.products.products);
+      return state.set('cart', action.value.get('cart').get('products').get('products'));
+    }
     default:
       return state;
   }

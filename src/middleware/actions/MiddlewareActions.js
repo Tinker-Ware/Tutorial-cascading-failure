@@ -6,3 +6,10 @@ export function receiveProducts(products){
     value: products
   };
 }
+
+export function receiveCart(cart){
+  return {
+    type: types.SET_CART,
+    value: cart
+  };
+}

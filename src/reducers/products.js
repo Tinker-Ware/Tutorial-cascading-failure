@@ -7,7 +7,7 @@ export default function products(state = initialState, action) {
   switch (action.type) {
     case types.SET_PRODUCTS:
     {
-      return state.set('products', action.value);
+      return state.set('products', action.value.get('products'));
     }
     default:
       return state;

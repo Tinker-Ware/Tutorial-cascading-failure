@@ -3,16 +3,19 @@ import {Link, IndexLink} from 'react-router';
 import {Map, fromJS} from 'immutable';
 import ProductItem from './ProductItem';
 
-const Content = ( {productsAppState, cartAppState, requestProducts, setCartItem} ) => {
+const Content = ( {productsAppState, cartAppState, requestCart, requestProducts, setCartItem} ) => {
   if(!productsAppState.get("products"))
     requestProducts();
+		
+	if(!cartAppState.get("cart"))
+		requestCart();
     
   const handleProductItemClick = (e) => {
     setCartItem(fromJS({
       cart_items: cartAppState.get("cart")? cartAppState.get("cart").map((value, index) =>
         value
       ).toJS() : [],
-      cart_item: productsAppState.get("products").get("products").filter(value => 
+      cart_item: productsAppState.get("products").filter(value => 
         value.get('id') == e.target.value
       ).first().toJS()
     }));
@@ -20,12 +23,12 @@ const Content = ( {productsAppState, cartAppState, requestProducts, setCartItem}
   
   const PrintProducts = 
     (productsAppState.get("products")) ?
-      productsAppState.get("products").get("products").map((value, index) => 
+      productsAppState.get("products").map((value, index) => 
         <ProductItem
           category={value.get("category")}
           description={value.get("description")}
           handleClick={handleProductItemClick}
-          identifier={index+1}
+          identifier={value.get("id")}
           image={value.get("image")}
           key={index}
           price={value.get("price")}
@@ -67,6 +70,7 @@ const Content = ( {productsAppState, cartAppState, requestProducts, setCartItem}
 Content.propTypes = {
   productsAppState: PropTypes.object.isRequired,
   cartAppState: PropTypes.object.isRequired,
+	requestCart: PropTypes.func.isRequired,
   requestProducts: PropTypes.func.isRequired,
   setCartItem: PropTypes.func.isRequired
 };
