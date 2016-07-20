@@ -7,7 +7,7 @@ const Header = ( {cartAppState, userAppState} ) => {
       <div className="container">
         <div className="head">
           <div className=" logo">
-            <Link to={'/'}><img src="images/logo.png" alt=""/></Link>	
+            <Link to={'/'}><img src="images/logo.png" alt=""/></Link>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@ const Header = ( {cartAppState, userAppState} ) => {
               <Link to={'/checkout'}>Checkout
                 <h3>
                   <div className="total">
-                    <span className="simpleCart_total">${cartAppState.get("cart") && cartAppState.get("cart").size >0 ? cartAppState.get("cart").map((value, index) =>
+                    <span className="simpleCart_total">${cartAppState.get("cart") && cartAppState.get("cart").size > 0 ? cartAppState.get("cart").map((value, index) =>
                       value.get("price")
                     ).toJS().reduce(function(previousValue, currentValue) {
                       return previousValue + currentValue;

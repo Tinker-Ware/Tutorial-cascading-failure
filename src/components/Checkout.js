@@ -32,6 +32,12 @@ const Checkout = ( {productsAppState, cartAppState, deleteCartItem, setOrder} ) 
           price={value.get("price")}
           title={value.get("title")}
         />) : "";
+	const PrintBtnProceedToBuy = 
+    (cartAppState.get("cart").size > 0) ?
+			<div className="produced">
+				<Link onClick={handleProceedToBuyClick} to={'/orderSummary'} className="hvr-skew-backward">
+					Proceed To Buy</Link>
+			</div> : "";
   return (
 		<div className="container">
 			<div className="check-out">
@@ -52,10 +58,7 @@ const Checkout = ( {productsAppState, cartAppState, deleteCartItem, setOrder} ) 
 						</table>
 					</div>
 				</div>
-				<div className="produced">
-					<Link onClick={handleProceedToBuyClick} to={'/orderSummary'} className="hvr-skew-backward">
-						Proceed To Buy</Link>
-				</div>
+				{PrintBtnProceedToBuy}
 			</div>
 		</div>
   );
