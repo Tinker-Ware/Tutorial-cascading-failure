@@ -47,7 +47,59 @@ We need to implement the following ranked User Stories.
 2. As a Katy Perry I need to feature some product.
 3. As a Client I need to have a top menu to access all feature products.
 
-### Modify ApiBluePrint files
+### 1. Modify ApiBluePrint files.
 
-1. Navigate to the folder /api and open this file then modify products.apib to add feature as bool.
-2. 
+#### Modify Products API
+
+1. Navigate to the folder /api and open products.apib in the editor.
+2. Modify this file to add feature as bool.
+3. Add feature: true to the products with ids 1, 4 and 7.
+4. Save the file.
+5. Restart the mock-server service.
+6. Verify the response making a call to /api/v1/products
+
+#### Modify Cart API
+
+1. Navigate to the folder /api and open cart.apib in the editor.
+2. Modify this file to add feature as bool.
+3. Add feature: true to the products with ids 2 and 5.
+4. Save the file.
+5. Restart the mock-server service.
+6. Verify the response making a call to /api/v1/cart
+ 
+### 2. Add feature path.
+
+1. Navigate to the folder /src and open routes.js in the editor.
+2. Modify this file to add the path /feature.
+3. Save the file.
+
+### 3. Add feature menu.
+
+1. Navigate to the folder /src/components and open header.js in the editor.
+2. Modify this file to add Link component to /feature.
+3. Save the file.
+
+### 4. Add feature-product styles.
+
+1. Navigate to the folder /src/components and open header.js in the editor.
+2. Modify this file nesting the class feature-product to mid-pop adding the following styles:
+  1. Position absolute.
+  2. Top -4px.
+  3. Right -4px.
+
+### 5. Add feature image to Product component.
+
+1. Navigate to the folder /src/components and open ProductItem.js in the editor.
+2. Modify this file adding the PropType for feature props.
+3. Create a const called PrintFeatureItem to be equal to:
+  1. Add an span tag with ClassName feature-product.
+  2. Into span tag add the image tag with src images/feature_product.png.
+4. Print PrintFeatureItem below the div with className mid-pop
+Tip: Feature image tag needs to be show only if props.feature is true. 
+
+### 6. Add validation for pathname /feature and add them to Content component.
+
+1. Navigate to the folder /src/components and open MainStore.js in the editor.
+2. Add validation for the path /feature into the const MainPageContent.
+3. Add the props filter that needs to be equal to the current pathname to Content component.
+Tip: Do not forget that if the current pathname is /feature filter need to be equal to Feature before assign this props.
