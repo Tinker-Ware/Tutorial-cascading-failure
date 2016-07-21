@@ -16,6 +16,8 @@
     "build": "babel-node tools/build.js && npm run open:dist",
     "mock-server": "node_modules/drakov/drakov -f \"src/api/*.apib\" \"src/api/\" -p 3100 --delay 200 --autoOptions --header authorization --header provider-token",
     "test": "mocha tools/testSetup.js \"src/**/*.spec.js\" --reporter progress",
+    "test:cover": "babel-node node_modules/isparta cover --root src --report html node_modules/mocha/bin/_mocha -- --require ./tools/testSetup.js \"src/**/*.spec.js\" --reporter progress",
+    "test:cover:travis": "babel-node node_modules/isparta/bin/isparta cover --root src --report lcovonly _mocha -- --require ./tools/testSetup.js \"src/**/*.spec.js\" && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "npm run test -- --watch"
   },
   "author": "TinkerWare",
@@ -51,6 +53,7 @@
     "chai": "3.5.0",
     "chalk": "1.1.3",
     "connect-history-api-fallback": "1.2.0",
+    "coveralls": "2.11.9",
     "cross-env": "1.0.8",
     "css-loader": "0.23.1",
     "drakov": "1.0.0",
