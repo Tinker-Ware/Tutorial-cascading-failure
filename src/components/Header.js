@@ -41,6 +41,7 @@ const Header = ( {cartAppState, userAppState} ) => {
                   <li><Link className="color" to={'/'}>Home</Link></li>
                   <li><Link className="color" to={'/women'}>Women</Link></li>
                   <li><Link className="color" to={'/men'}>Men</Link></li>
+                  <li><Link className="color" to={'/feature'}>Feature</Link></li>
                 </ul>
               </div>
             </nav>

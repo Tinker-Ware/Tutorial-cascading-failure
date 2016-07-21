@@ -28,7 +28,7 @@ const Content = ( {productsAppState, cartAppState, userAppState, orderAppState, 
     (filter!=="")?
       (productsAppState.get("products")) ?
         productsAppState.get("products").filter(value => 
-          value.get("category") === filter
+          (filter === "Feature")? value.get("feature") : value.get("category") === filter
         ).map((value, index) => 
           <ProductItem
             category={value.get("category")}
@@ -37,6 +37,7 @@ const Content = ( {productsAppState, cartAppState, userAppState, orderAppState, 
             identifier={value.get("id")}
             image={value.get("image")}
             key={index}
+            feature={value.get("feature")}
             price={value.get("price")}
             title={value.get("title")}
           />) : ""
@@ -48,6 +49,7 @@ const Content = ( {productsAppState, cartAppState, userAppState, orderAppState, 
             handleClick={handleProductItemClick}
             identifier={value.get("id")}
             image={value.get("image")}
+            feature={value.get("feature")}
             key={index}
             price={value.get("price")}
             title={value.get("title")}
