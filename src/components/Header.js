@@ -7,7 +7,7 @@ const Header = ( {cartAppState, userAppState} ) => {
       <div className="container">
         <div className="head">
           <div className=" logo">
-            <Link to={'/'}><img src="images/logo.png" alt=""/></Link>
+            <Link to={'/'}><img src={require("../images/logo.png")} alt=""/></Link>
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@ const Header = ( {cartAppState, userAppState} ) => {
                       return previousValue + currentValue;
                     }).toFixed(2):0}</span>
                   </div>
-                  <img src="images/cart.png" alt=""/>
+                  <img src={require("../images/cart.png")} alt=""/>
                 </h3>
               </Link>
               <p><Link to={'/checkout'} className="simpleCart_empty">{cartAppState.get("cart") ? cartAppState.get("cart").size + ' Product(s)': 'Empty Cart'}</Link></p>

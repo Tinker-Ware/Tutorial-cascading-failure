@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="footer-middle">
         <div className="container">
           <div className="col-md-3 footer-middle-in">
-            <Link to={'/'}><img src="images/log.png" alt=""/></Link>
+            <Link to={'/'}><img src={require("../images/log.png")} alt=""/></Link>
             <p>Suspendisse sed accumsan risus. Curabitur rhoncus, elit vel tincidunt elementum, nunc urna tristique nisi, in interdum libero magna tristique ante. adipiscing varius. Vestibulum dolor lorem.</p>
           </div>
           <div className="col-md-3 footer-middle-in">
@@ -51,9 +51,9 @@ const Footer = () => {
       <div className="footer-bottom">
         <div className="container">
           <ul className="footer-bottom-top">
-            <li><a href="javascript:void(0)"><img src="images/f1.png" className="img-responsive" alt=""/></a></li>
-            <li><a href="javascript:void(0)"><img src="images/f2.png" className="img-responsive" alt=""/></a></li>
-            <li><a href="javascript:void(0)"><img src="images/f3.png" className="img-responsive" alt=""/></a></li>
+            <li><a href="javascript:void(0)"><img src={require("../images/f1.png")} className="img-responsive" alt=""/></a></li>
+            <li><a href="javascript:void(0)"><img src={require("../images/f2.png")} className="img-responsive" alt=""/></a></li>
+            <li><a href="javascript:void(0)"><img src={require("../images/f3.png")} className="img-responsive" alt=""/></a></li>
           </ul>
           <p className="footer-class">&copy; 2016 Shopping. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
           <div className="clearfix"> </div>

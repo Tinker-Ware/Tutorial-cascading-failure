@@ -5,7 +5,7 @@ const OrderSummaryItem = ( props ) => {
 		<tr key={props.identifier} className="cart-header">
 			<td className="ring-in">
 				<a href="single.html" className="at-in">
-					<img src={props.image} className="img-responsive" alt={props.title} />
+					<img src={require("../images/"+props.image)} className="img-responsive" alt={props.title} />
 				</a>
 				<div className="sed">
 					<h5>

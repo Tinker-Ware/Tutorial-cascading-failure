@@ -19,7 +19,7 @@ const Content = ( {productsAppState, cartAppState, userAppState, orderAppState, 
         value
       ).toJS() : [],
       cart_item: productsAppState.get("products").filter(value => 
-        value.get('id') == e.target.value
+        value.get('id') == parseInt(e.target.id)
       ).first().toJS()
     }));
   };

@@ -5,7 +5,7 @@ const CartProductItem = ( props ) => {
 		<tr key={props.identifier} className="cart-header">
 			<td className="ring-in">
 				<a href="single.html" className="at-in">
-					<img src={props.image} className="img-responsive" alt={props.title} />
+					<img src={require("../images/"+props.image)} className="img-responsive" alt={props.title} />
 				</a>
 				<div className="sed">
 					<h5>
@@ -14,7 +14,10 @@ const CartProductItem = ( props ) => {
 					<p>{props.category}</p>
 				</div>
 				<div className="clearfix"> </div>
-				<div onClick={props.handleClick} value={props.identifier}  className="close1"></div>
+				<div
+          onClick={props.handleClick}
+          id={props.identifier}
+          className="close1" />
 			</td>
 			<td>$ {props.price}</td>
 			<td>FREE SHIPPING</td>

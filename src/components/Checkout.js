@@ -9,7 +9,7 @@ const Checkout = ( {productsAppState, cartAppState, deleteCartItem, setOrder} ) 
       cart_items: cartAppState.get("cart")? cartAppState.get("cart").map((value, index) =>
         value
       ).toJS() : [],
-      id: e.target.value
+      id: parseInt(e.target.id)
     }));
   };
 	const handleProceedToBuyClick = (e) => {

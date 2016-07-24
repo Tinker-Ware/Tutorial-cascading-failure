@@ -5,7 +5,7 @@ const ProductItem = ( props ) => {
       <div key={props.identifier} className="col-md-3 item-grid simpleCart_shelfItem">
         <div className="mid-pop">
           <div className="pro-img">
-            <img src={props.image} className="img-responsive" alt={props.title}/>
+            <img src={require("../images/"+props.image)} className="img-responsive" alt={props.title}/>
           </div>
           <div className="mid-1">
             <div className="women">
@@ -14,10 +14,12 @@ const ProductItem = ( props ) => {
                 <h6><a href="javascript:void(0)">{props.title}</a></h6>
               </div>
               <div className="img item_add">
-                <a 
-                  onClick={props.handleClick}
-                  href="javascript:void(0)">
-                    <img value={props.identifier} src="images/ca.png" alt="add to cart"/>
+                <a href="javascript:void(0)">
+                  <img 
+                    onClick={props.handleClick}
+                    id={props.identifier}
+                    src={require("../images/ca.png")}
+                    alt="add to cart" />
                 </a>
               </div>
               <div className="clearfix"></div>
