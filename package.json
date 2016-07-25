@@ -6,6 +6,7 @@
     "npm": ">=3"
   },
   "scripts": {
+    "main-store": "git checkout -f && git clean -f && git checkout master",
     "add-feature": "git checkout -f && git clean -f && git checkout add-feature",
     "fix-feature": "git checkout -f && git clean -f && git checkout fix-feature",
     "build": "babel-node tools/build.js && npm run open:dist",
