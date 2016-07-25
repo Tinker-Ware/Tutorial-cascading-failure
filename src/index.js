@@ -7,7 +7,7 @@ import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
-import './styles/bootstrap.css';
+import './styles/bootstrap.scss';
 import './styles/styles.scss';
 require('./favicon.ico');
 
